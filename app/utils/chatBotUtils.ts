@@ -1,7 +1,7 @@
 import data from "../../data/Chatbot-data.json";
 import { Exchange, Stock, Step, Message } from "../types/chatBotTypes";
 
-// Updated normalizeStep function with correct Step type test
+// Updated normalizeStep function with correct Step type
 export const normalizeStep = (
   option: string,
   currentStep: Step
