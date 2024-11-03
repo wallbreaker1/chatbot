@@ -67,25 +67,22 @@ const handleBackOption = (currentStep: NonNullable<Step>) => {
 // Main normalizeStep function with refined type checking
 export const normalizeStep = (
   option: string,
-  currentStep: Step | null
+  currentStep: Step
 ): {
   newStep: Step;
   messageText: string;
   messageOptions: string[];
 } | null => {
-  if (currentStep === null) {
-    // No step yet, so we handle exchange selection
+  if (!currentStep.selectedExchangeCode) {
     return handleExchangeSelection(option);
   }
 
   if (currentStep.selectedExchangeCode && !currentStep.selectedStockCode) {
-    // Exchange selected but no stock selected, handle stock selection
-    return handleStockSelection(option, currentStep as NonNullable<Step>);
+    return handleStockSelection(option, currentStep);
   }
 
   if (currentStep.selectedStockCode && option === "Back") {
-    // Stock is selected, and we’re going back
-    return handleBackOption(currentStep as NonNullable<Step>);
+    return handleBackOption(currentStep);
   }
 
   return null;
