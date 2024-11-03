@@ -21,4 +21,4 @@ export type Step = {
   stocks?: Stock[];
   selectedStockCode?: string;
   selectedStockPrice?: number;
-} | null;
+};

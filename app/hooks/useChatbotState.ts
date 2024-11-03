@@ -4,7 +4,7 @@ import { Message, Step } from "../types/chatBotTypes";
 import { normalizeStep } from "../utils/chatBotUtils";
 
 const useChatbot = () => {
-  const [step, setStep] = useState<Step | null>(null);
+  const [step, setStep] = useState<Step>({});
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,7 +28,7 @@ const useChatbot = () => {
   const handleOptionClick = (option: string) => {
     const result = normalizeStep(option, step);
     if (!result) {
-      setStep(null);
+      setStep({});
       setMessages((prevMessages) => [
         ...prevMessages,
         {
