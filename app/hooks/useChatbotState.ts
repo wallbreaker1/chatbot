@@ -8,12 +8,10 @@ const useChatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll to the latest message whenever messages update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Initialize the default bot message on mount
   useEffect(() => {
     const exchangeOptions = data.map((exchange) => exchange.stockExchange);
     const initialMessage: Message = {
@@ -24,7 +22,6 @@ const useChatbot = () => {
     setMessages([initialMessage]);
   }, []);
 
-  // Handle option selection
   const handleOptionClick = (option: string) => {
     const result = normalizeStep(option, step);
     if (!result) {

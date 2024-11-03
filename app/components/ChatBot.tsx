@@ -16,6 +16,11 @@ export default function Chatbot() {
 
   return (
     <div className="flex flex-col h-[500px] w-full max-w-md mx-auto border border-gray-300 rounded-lg shadow-lg">
+      {/* Title Section */}
+      <div className="bg-blue-500 p-4 text-white text-center font-bold text-lg rounded-t-lg">
+        LSEG Chatbot
+      </div>
+
       <div className="flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50">
         {messages.map((message, index) => (
           <div key={index} className="flex flex-col items-start">
