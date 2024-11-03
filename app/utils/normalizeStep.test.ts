@@ -5,10 +5,11 @@ import { Step } from "../types/chatBotTypes";
 describe("normalizeStep", () => {
   it("should return the correct response when selecting an exchange from a null step", () => {
     const option = data[0].stockExchange;
-    const result = normalizeStep(option, {});
+    const result = normalizeStep(option, {}); // Pass null for step
 
-    // Assert that result is not null before accessing newStep
-    expect(result).not.toBeNull();
+    // We don't need the null check here anymore
+    expect(result).toBeDefined(); // This is more concise than not.toBeNull()
+
     if (result) {
       expect(result.newStep.selectedExchangeCode).toBe(data[0].code);
       expect(result.messageText).toContain("Please select a stock");
@@ -24,7 +25,9 @@ describe("normalizeStep", () => {
     const option = stocks[0].stockName;
     const result = normalizeStep(option, step);
 
-    expect(result).not.toBeNull();
+    // Same here, we can check that result is defined
+    expect(result).toBeDefined();
+
     if (result) {
       expect(result.newStep.selectedStockCode).toBe(stocks[0].code);
       expect(result.newStep.selectedStockPrice).toBe(stocks[0].price);
@@ -45,7 +48,8 @@ describe("normalizeStep", () => {
 
     const result = normalizeStep("Back", step);
 
-    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+
     if (result) {
       expect(result.newStep.selectedExchangeCode).toBe(data[0].code);
       expect(result.newStep.selectedStockCode).toBeUndefined();

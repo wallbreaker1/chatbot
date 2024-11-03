@@ -1,7 +1,6 @@
 import data from "../../data/Chatbot-data.json";
 import { Exchange, Stock, Step, Message } from "../types/chatBotTypes";
 
-// Updated helper functions
 const handleExchangeSelection = (option: string) => {
   const selectedExchange = data.find(
     (exchange: Exchange) => exchange.stockExchange === option
@@ -21,11 +20,7 @@ const handleExchangeSelection = (option: string) => {
   return null;
 };
 
-// Now requires non-null currentStep parameter
-const handleStockSelection = (
-  option: string,
-  currentStep: NonNullable<Step>
-) => {
+const handleStockSelection = (option: string, currentStep: Step) => {
   const selectedStock = currentStep.stocks?.find(
     (stock: Stock) => stock.stockName === option
   );
@@ -43,8 +38,7 @@ const handleStockSelection = (
   return null;
 };
 
-// Updated to require currentStep parameter as non-null
-const handleBackOption = (currentStep: NonNullable<Step>) => {
+const handleBackOption = (currentStep: Step) => {
   const selectedExchangeName = data.find(
     (exchange) => exchange.code === currentStep.selectedExchangeCode
   )?.stockExchange;
